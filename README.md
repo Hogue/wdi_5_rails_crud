@@ -111,7 +111,7 @@ By id, Pet.**[find](http://api.rubyonrails.org/classes/ActiveRecord/FinderMethod
 
 ### Modify a table
 
-To modify an existing table we run `rails generate migration` _(alias `rails g migration`)_ followed by `rake db:migrate`.
+To modify an existing table we'll run `rails generate migration` _(alias `rails g migration`)_ followed by `rake db:migrate`.
 
 
 ---
