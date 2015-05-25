@@ -24,7 +24,7 @@ By the end of this lesson, students should be able to:
 
 Why is this important?
 
-Because the vast majority of enterprise data is stored in relational databases, but objects are often used to manipulate that data in applications. And, although **[NoSQL](http://en.wikipedia.org/wiki/NoSQL)** databases _(e.g Firebase)_ have been growing in popularity, their ability to support distributed data to enhance performance makes achieving **[ACID](http://en.wikipedia.org/wiki/ACID)** transaction a significant challenge.
+Because the vast majority of enterprise data is stored in relational databases, but objects are often used to manipulate that data in applications. And, although **[NoSQL](http://en.wikipedia.org/wiki/NoSQL)** databases _(e.g Mongo DB)_ have been growing in popularity, their ability to support distributed data to enhance performance makes achieving **[ACID](http://en.wikipedia.org/wiki/ACID)** transactions a significant challenge.
 
 **[Mongo DB Is Web Scale](https://www.youtube.com/watch?v=b2F-DItXtZs)**
 
@@ -67,14 +67,12 @@ As before, we need to create the database.  We'll use the command line applicati
 
 ```bash
 $ rake db:create
-$
 ```
 
-Rake is a task runner and `rake -T ` provide a brief description the tasks it's configured to run from the current `Rakefile`.  Let's have a look at the `db` tasks.
+Rake is a task runner and `rake -T ` provides a brief description of the tasks it's configured to run from the current `Rakefile`.  Let's have a look at the `db` tasks.
 
 ```bash
 $ rake -T db
-$
 ```
 
 ### Pets
@@ -83,7 +81,7 @@ We'll store and manipulate information about pets.
 
 ### Create a table
 
-To generate the code necessary to create a table and the code to manipulate data stored in that table, we use `rails generate model` _(alias `rails g model`)_.  If you ruhttp://api.rubyonrails.org/classes/ActiveRecord/Persistence/ClassMethods.html#method-i-createn `rails g model` without any arguments, Rails tells you what you can do.
+To generate the code necessary to create a table and the code to manipulate data stored in that table, we use `rails generate model` _(alias `rails g model`)_.  If you run `rails g model` without any arguments, Rails tells you what you can do.
 
 ```bash
 $ rails g model Pet name:string dob:string
@@ -101,13 +99,13 @@ The table defined by the migration, and needed by the model, isn't created until
 
 #### Insert a row
 
-To insert a row we can use `rails c`, then use the one of the methods Pet.**[new](http://api.rubyonrails.org/classes/ActiveRecord/Core.html#method-c-new)**, comabined with a save, or Pet.**[create](http://api.rubyonrails.org/classes/ActiveRecord/Persistence/ClassMethods.html#method-i-create)**.
+To insert a row we can use `rails c`, then use the one of the methods Pet.**[new](http://api.rubyonrails.org/classes/ActiveRecord/Core.html#method-c-new)**, combined with a save, or Pet.**[create](http://api.rubyonrails.org/classes/ActiveRecord/Persistence/ClassMethods.html#method-i-create)**.
 
 ---
 
 #### Find a row
 
-By id, Pet.**[find](http://api.rubyonrails.org/classes/ActiveRecord/FinderMethods.html#method-i-find)**; by criteria, Pet.**[find](http://api.rubyonrails.org/classes/ActiveRecord/FinderMethods.html#method-i-find_by)**.  See also, http://api.rubyonrails.org/classes/ActiveRecord/QueryMethods.html and http://guides.rubyonrails.org/active_record_querying.html.
+By id, Pet.**[find](http://api.rubyonrails.org/classes/ActiveRecord/FinderMethods.html#method-i-find)**; by criteria, Pet.**[find_by](http://api.rubyonrails.org/classes/ActiveRecord/FinderMethods.html#method-i-find_by)**.  See also, http://api.rubyonrails.org/classes/ActiveRecord/QueryMethods.html and http://guides.rubyonrails.org/active_record_querying.html.
 
 ---
 
@@ -120,7 +118,7 @@ To modify an existing table we run `rails generate migration` _(alias `rails g m
 
 #### Update a row
 
-After retrieving an object, we can updated it using manfred.**[update](http://api.rubyonrails.org/classes/ActiveRecord/Persistence.html#method-i-update)**.
+After retrieving an object, we can update it using manfred.**[update](http://api.rubyonrails.org/classes/ActiveRecord/Persistence.html#method-i-update)**.
 
 ---
 
