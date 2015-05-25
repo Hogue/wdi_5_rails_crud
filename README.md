@@ -63,7 +63,7 @@ $
 
 As we can see, `rails db` runs `psql`.  If the Rails App had been configured for a different database server, `rails db` would have started a different command line client.
 
-As before, we need to create the database.  We'll use the command line application **[rake](http://guides.rubyonrails.org/command_line.html#rake)** which Rails uses to manage changes to the structure of the database.
+As before, we need to create the database.  We'll use the command line application **[rake](http://guides.rubyonrails.org/command_line.html#rake)** which Rails uses to manage changes to the structure of the database (among other things).
 
 ```bash
 $ rake db:create
@@ -83,46 +83,50 @@ We'll store and manipulate information about pets.
 
 ### Create a table
 
-`rails generate model` _(alias `rails g model`)_
+To generate the code necessary to create a table and the code to manipulate data stored in that table, we use `rails generate model` _(alias `rails g model`)_.  If you ruhttp://api.rubyonrails.org/classes/ActiveRecord/Persistence/ClassMethods.html#method-i-createn `rails g model` without any arguments, Rails tells you what you can do.
 
-`rake db:migrate`
+```bash
+$ rails g model Pet name:string dob:string
+      invoke  active_record
+      create    db/migrate/20150525164437_create_pets.rb
+      create    app/models/pet.rb
+$
+```
+
+Let's look at the files created.  The model created inherits from **[ActiveRecord::Base](http://api.rubyonrails.org/classes/ActiveRecord/Base.html)**.  The migration from **[ActiveRecord::Migration](http://api.rubyonrails.org/classes/ActiveRecord/Migration.html)** (see also http://guides.rubyonrails.org/active_record_migrations.html).
+
+The table defined by the migration, and needed by the model, isn't created until we run `rake db:migrate`.
 
 ---
 
 #### Insert a row
 
-```bash
-$ rails c
-Loading development environment (Rails 4.2.1)
-[1] pry(main)>
-```
-
-Pet.new or Pet.create
+To insert a row we can use `rails c`, then use the one of the methods Pet.**[new](http://api.rubyonrails.org/classes/ActiveRecord/Core.html#method-c-new)**, comabined with a save, or Pet.**[create](http://api.rubyonrails.org/classes/ActiveRecord/Persistence/ClassMethods.html#method-i-create)**.
 
 ---
 
 #### Find a row
 
-Pet.find
+By id, Pet.**[find](http://api.rubyonrails.org/classes/ActiveRecord/FinderMethods.html#method-i-find)**; by criteria, Pet.**[find](http://api.rubyonrails.org/classes/ActiveRecord/FinderMethods.html#method-i-find_by)**.  See also, http://api.rubyonrails.org/classes/ActiveRecord/QueryMethods.html and http://guides.rubyonrails.org/active_record_querying.html.
 
 ---
 
 ### Modify a table
 
-`rails generate migration` _(alias `rails g migration`)_ followed by `rake db:migrate`
+To modify an existing table we run `rails generate migration` _(alias `rails g migration`)_ followed by `rake db:migrate`.
 
 
 ---
 
 #### Update a row
 
-pet.update
+After retrieving an object, we can updated it using manfred.**[update](http://api.rubyonrails.org/classes/ActiveRecord/Persistence.html#method-i-update)**.
+
+---
 
 #### Delete a row
 
-pet.delete
-
-Pet.delete_all
+To delete a row we'll use manfred.**[delete](http://api.rubyonrails.org/classes/ActiveRecord/Persistence.html#method-i-delete)** or Pet.**[delete_all](http://api.rubyonrails.org/classes/ActiveRecord/Relation.html#method-i-delete_all)**.
 
 ---
 
